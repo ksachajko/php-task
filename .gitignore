@@ -3,3 +3,6 @@
 
 # Tests
 /report
+
+# PHPStorm
+/.idea
