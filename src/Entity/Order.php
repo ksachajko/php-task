@@ -25,14 +25,16 @@ class Order
             $items[] = [
                 'id' => $item->getProduct()->getId(),
                 'quantity' => $item->getQuantity(),
-                'total_price' => $item->getTotalPrice()
+                'total_price' => $item->getTotalPrice(),
+                'total_price_gross' => $item->getTotalPriceGross()
             ];
         }
 
         return [
             'id' => $this->id,
             'items' => $items,
-            'total_price' => $this->cart->getTotalPrice()
+            'total_price' => $this->cart->getTotalPrice(),
+            'total_price_gross' => $this->cart->getTotalPriceGross()
         ];
     }
 }

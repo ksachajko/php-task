@@ -47,4 +47,14 @@ class Item
     {
         return $this->quantity * $this->product->getUnitPrice();
     }
+
+    public function getTotalPriceGross(): int
+    {
+        $netPrice = $this->getTotalPrice();
+        #TODO perhaps refactor tax to already have decimal values, like 23% -> 0.23
+        #TODO is this valid float->int conversion in terms of money handling? perhaps some library
+        $taxValue =  (int) round($netPrice*($this->getProduct()->getTax()->getValue()/100));
+
+        return $netPrice + $taxValue;
+    }
 }
