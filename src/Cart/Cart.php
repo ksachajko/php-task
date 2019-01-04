@@ -48,6 +48,17 @@ class Cart
         return $totalPrice;
     }
 
+    public function getTotalPriceGross(): int
+    {
+        $totalPriceGross = 0;
+
+        foreach ($this->items as $item) {
+            $totalPriceGross += $item->getTotalPriceGross();
+        }
+
+        return $totalPriceGross;
+    }
+
     public function getItem(int $index): Item
     {
         if (!array_key_exists($index, $this->items)) {
@@ -77,6 +88,7 @@ class Cart
         }
     }
 
+    #TODO perhaps move to separate class
     public function checkout(int $id): Order
     {
         $order = new Order($id, clone $this);

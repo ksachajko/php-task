@@ -11,9 +11,11 @@ class Product
     const MINIMUM_QUANTITY = 1;
 
     private $id;
+    //TODO not used
     private $name;
     private $unitPrice;
     private $minimumQuantity = self::MINIMUM_QUANTITY;
+    private $tax;
 
     public function getId(): int
     {
@@ -56,6 +58,19 @@ class Product
         }
 
         $this->minimumQuantity = $minimumQuantity;
+
+        return $this;
+    }
+
+    #TODO perhaps throw exception if tax was not set
+    public function getTax(): ?Tax
+    {
+        return $this->tax;
+    }
+
+    public function setTax(Tax $tax): self
+    {
+        $this->tax = $tax;
 
         return $this;
     }
